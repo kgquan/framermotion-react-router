@@ -35,13 +35,13 @@ const Home = ({ imageDetails, image }) => (
                 </Link>
               </div>
             </div>
-            <div className='information'>
+            <motion.div exit={{ opacity: 0 }} transition={transition} className='information'>
               <div className='title'>Yasmeen Tariq</div>
               <div className='location'>
                 <span>28.538336</span>
                 <span>-81.379234</span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
