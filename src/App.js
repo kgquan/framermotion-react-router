@@ -21,7 +21,7 @@ function App() {
       <Header />
       <Route
         render={({ location }) => (
-          <AnimatePresence initial={false} >
+          <AnimatePresence>
             <Switch location={location} key={location.pathname}>
               <Route
                 exact

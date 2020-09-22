@@ -1,22 +1,25 @@
 import React from "react";
+import { motion } from 'framer-motion';
 //Components
 import ScrollForMore from "../components/scrollForMore";
 //Ease
 
-const Model = () => {
+const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
+
+const Model = ({ imageDetails }) => {
   return (
-    <div className='single'>
+    <motion.div initial='initial' animate='animate' exit='exit' className='single'>
       <div className='container fluid'>
         <div className='row center top-row'>
           <div className='top'>
-            <div className='details'>
+            <motion.div initial={{ opacity: 0 }} className='details'>
               <div className='location'>
                 <span>28.538336</span>
                 <span>-81.379234</span>
               </div>
               <div className='mua'>MUA: @mylifeascrystall</div>
-            </div>
-            <div className='model'>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} className='model'>
               <span className='first'>
                 <span>Y</span>
                 <span>a</span>
@@ -33,17 +36,36 @@ const Model = () => {
                 <span>i</span>
                 <span>q</span>
               </span>
-            </div>
+            </motion.div>
           </div>
         </div>
         <div className='row bottom-row'>
           <div className='bottom'>
             <div className='image-container-single'>
-              <div className='thumbnail-single'>
+              <motion.div 
+                initial={{
+                  y: "-50%",
+                  width: imageDetails.width, 
+                  height: imageDetails.height
+                }}
+                animate={{ 
+                  y: 0,
+                  width: "100%",
+                  height: window.innerWidth > 1440 ? 800 : 400,
+                  transition: { delay: .2, ...transition }
+                }}
+                className='thumbnail-single'>
                 <div className='frame-single'>
-                  <img src={require("../images/yasmeen.webp")} alt='an image' />
+                  <motion.img 
+                    initial={{ scale: 1.1 }}
+                    animate={{
+                      transition: { delay: .2, ...transition },
+                      y: window.innerWidth > 1440 ? -1200 : -600
+                    }}
+                    src={require("../images/yasmeen.webp")} 
+                    alt='Yasmeen Tariq' />
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
           <ScrollForMore />
@@ -72,7 +94,7 @@ const Model = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
