@@ -59,7 +59,7 @@ const Model = ({ imageDetails }) => {
               }}
               animate={{ 
                 opacity: 1,
-                y: 20,
+                y: 0,
                 transition: { 
                   delay: 1.2, ...transition 
                 }
