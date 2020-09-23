@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 //Components
 import ScrollForMore from "../components/scrollForMore";
 //Ease
@@ -47,6 +47,10 @@ const letter = {
 }
 
 const Model = ({ imageDetails }) => {
+  const { scrollYProgress } = useViewportScroll();
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.4]);
+
   return (
     <motion.div initial='initial' animate='animate' exit='exit' className='single'>
       <div className='container fluid'>
@@ -109,6 +113,7 @@ const Model = ({ imageDetails }) => {
                 className='thumbnail-single'>
                 <div className='frame-single'>
                   <motion.img 
+                    style= {{ scale: scale }}
                     initial={{ scale: 1.1 }}
                     animate={{
                       transition: { delay: .2, ...transition },
